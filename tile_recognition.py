@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 import json
 import os
-
+os.environ["CUDA_VISIBLE_DEVICES"] = ""  # ✅ Force Torch to ignore CUDA
 app = Flask(__name__)
 model = YOLO("best.pt")
 model.to("cpu")  # ✅ force CPU mode
