@@ -6,7 +6,9 @@ import json
 import os
 
 app = Flask(__name__)
-model = YOLO("best.pt")  # Place best.pt in the same directory
+model = YOLO("best.pt")
+model.to("cpu")  # ✅ force CPU mode
+
 
 @app.route("/detect", methods=["POST"])
 def detect_tiles():
