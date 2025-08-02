@@ -6,11 +6,16 @@ import json
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = ""  # ✅ Force Torch to ignore CUDA
 app = Flask(__name__)
-model = YOLO("best.pt")
-model.to("cpu")  # ✅ force CPU mode
+#model = YOLO("best.pt")
+#model.to("cpu")  # ✅ force CPU mode
 
 
 @app.route("/detect", methods=["POST"])
+def detect():
+    return jsonify({"debug": "Model is disabled for testing"})
+
+
+#@app.route("/detect", methods=["POST"])
 def detect_tiles():
     if 'image' not in request.files:
         return jsonify({"error": "No image uploaded"}), 400
